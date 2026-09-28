@@ -1,0 +1,16 @@
+# IDE / editor
+.idea/
+*.iml
+.vscode/
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Build / dependency cache
+/vendor/
