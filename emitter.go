@@ -87,10 +87,16 @@ func (e *Emitter) TextEnd(messageId string) { e.write(events.NewTextMessageEndEv
 
 // --- reasoning ---
 
-func (e *Emitter) ReasoningStart(id string) { e.write(events.NewReasoningStartEvent(id)) }
+func (e *Emitter) ReasoningStart() string {
+	reasoningID := events.GenerateMessageID()
+	e.write(events.NewReasoningStartEvent(reasoningID))
+	return reasoningID
+}
 
-func (e *Emitter) ReasoningMessageStart(id string) {
-	e.write(events.NewReasoningMessageStartEvent(id, "assistant"))
+func (e *Emitter) ReasoningMessageStart() string {
+	messageID := events.GenerateMessageID()
+	e.write(events.NewReasoningMessageStartEvent(messageID, "assistant"))
+	return messageID
 }
 
 func (e *Emitter) ReasoningContent(id, delta string) {
